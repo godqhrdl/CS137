@@ -18,8 +18,9 @@ public class Customer {
     String city;
     String state;
     int zipcode;  
+    String date;
 
-    public Customer(int cID, String name,String email, String address, String city, String state, int zipcode) {
+    public Customer(int cID, String name,String email, String address, String city, String state, int zipcode, String date) {
         this.cID = cID;
         this.name = name;
         this.email = email;
@@ -27,6 +28,7 @@ public class Customer {
         this.city = city;
         this.state = state;
         this.zipcode = zipcode;
+        this.date = date;
     }
      public Customer(String name, String email, String address, String city, String state, int zipcode) {
         
@@ -91,6 +93,14 @@ public class Customer {
 
     public void setZipcode(int zipcode) {
         this.zipcode = zipcode;
+    }
+    
+    public String getDate(){
+        return  date;
+    }
+    
+    public void setDate(String date){
+        this.date = date;
     }
      
 }
