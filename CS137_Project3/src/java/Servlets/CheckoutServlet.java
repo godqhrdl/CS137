@@ -105,6 +105,26 @@ public class CheckoutServlet extends HttpServlet {
   
                         CheckoutService.InsertCustomer(customer);
                         session.setAttribute("this-customer", customer);
+                        String em = customer.getEmail();
+                    session.setAttribute("em", em);
+                    String nm = customer.getName();
+                    session.setAttribute("nm", nm);
+                    String addr = customer.getAddress();
+                    session.setAttribute("addr", addr);
+                    String cty = customer.getCity();
+                    session.setAttribute("cty", cty);
+                    String stt = customer.getState();
+                    session.setAttribute("stt", stt);
+                    int zc = customer.getZipcode();
+                    String zipc = Integer.toString(zc);
+                    session.setAttribute("zipc", zipc);
+                    
+        try {
+            List<String> mail = OrderDetail.getInfo(em, nm, addr, cty, stt, zipc);
+            session.setAttribute("mail", mail);
+        } catch (SQLException ex) {
+            Logger.getLogger(CheckoutServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
                         // session.setAttribute("current-shopping-cart", items);
                         List<CartItem> copy = new ArrayList<CartItem>();
                         copy = items;
