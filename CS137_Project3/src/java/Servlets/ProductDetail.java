@@ -30,6 +30,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 
 
 
@@ -42,7 +44,7 @@ public class ProductDetail extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        System.out.println("HELLO WORLD!!");
        //int pid = 111112;
       
        //int number = request.setParameter("pid");
@@ -82,7 +84,27 @@ public class ProductDetail extends HttpServlet{
         
      
        HashMap users =  (HashMap) servContext.getAttribute("users");
-       
+       List<Product> LastViewedList =  (List<Product>) session.getAttribute("LastViewedList");
+       if (LastViewedList==null)
+       {
+           System.out.println("NOW IT IS NULL");
+           LastViewedList=new ArrayList<Product>();
+           LastViewedList.add(product);
+       }
+       else{
+           if (LastViewedList.size()<=4)
+           {
+                System.out.println("SIZE IS FINE. " + LastViewedList.size());
+               LastViewedList.add(product);
+           }
+           else
+           {
+               System.out.println("SIZE IS NOT FINE.");
+               LastViewedList.remove(0);
+               LastViewedList.add(product);
+           }
+       }
+       session.setAttribute("LastViewdList",LastViewedList);
        // if user is leaving this page,  remove user from hashmap
        if ((request.getAttribute("load") == "false") && (users != null)){
            if (request.getAttribute("product") != null){

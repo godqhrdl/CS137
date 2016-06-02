@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="Beans.*,  Services.*,java.util.*"%>
-
+<%@ page import="javax.servlet.*" %>
 <!DOCTYPE html>
 
 <html>
@@ -44,13 +44,13 @@
         String pathToProduct = request.getContextPath()+"/ProductDetail?id=";
         String cartToPath = addr + "/Cart?action=add&quantity=1&product=";
         ViewedProducts.add((Product) session.getAttribute("one_prd"));
-        if (ViewedProducts.get(0)==null){
-            ViewedProducts.remove(0);
-        }
-        if (ViewedProducts.size()==6){
-            ViewedProducts.remove(0);
-        }
-        if (ViewedProducts.size()==0)
+        List<Product> LastViewedList = (List<Product>)session.getAttribute("LastViewedList");
+        
+        
+        //if (ViewedProducts.size()==6){
+           // ViewedProducts.remove(0);
+        //}
+        if (LastViewedList==null)
         {
             out.print("<h3> You don't have any recently viewed items.</h3><br>");
         }
@@ -65,7 +65,9 @@
             <div align="center">
             
         <%
-        for(Product p : ViewedProducts){
+            
+        if (LastViewedList!=null){
+        for(Product p : LastViewedList){
         %>
         
         <table width="800px" border="0" cellspacing="0" cellpadding="10">
@@ -106,7 +108,7 @@
         </tbody>
     </table>
  <hr>
-<%}%>
+<%}}%>
             </div>
         </div>
     </div>  
