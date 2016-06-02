@@ -19,6 +19,15 @@
        <%
         List<CartItem> items = (List<CartItem>) session.getAttribute("saled-items");
         BigDecimal totalPrice= (BigDecimal) session.getAttribute("total-price");
+         List<String> mail = (List<String>) session.getAttribute("mail");
+        String cid = mail.get(0);
+        String n = mail.get(1);
+        String em = mail.get(2);
+        String add = mail.get(3);
+        String ct = mail.get(4);
+        String st = mail.get(5);
+        String zip = mail.get(6);
+        String date = mail.get(7);
               
         %>
         <div class="container" style="margin: auto">
@@ -59,6 +68,32 @@
                     <tr>
                         <td style="text-align: left">
                         <h4>Price: $<%=item.getProduct().getPrice()%></h4>  
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left">
+                        <h4>Customer ID: <%=cid%></h4>  
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left">
+                        <h4>Customer Name: <%=n%></h4>  
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left">
+                        <h4>Email: <%=em%></h4>  
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left">
+                        <h4>Address: <%=add%>, <%=ct%>, <%=st%>  <%=zip%></h4>  
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td style="text-align: left">
+                        <h4>Date Ordered: <%=date%></h4>  
                         </td>
                     </tr>
                     
