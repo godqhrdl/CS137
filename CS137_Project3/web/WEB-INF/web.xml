@@ -96,6 +96,11 @@
         <url-pattern>/ShoppingCart/*</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>OrderDetail</servlet-name>
+        <servlet-class>Services.OrderDetail</servlet-class>
+    </servlet>
+    
     <session-config>
         <session-timeout>
             30
