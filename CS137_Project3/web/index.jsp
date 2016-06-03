@@ -45,6 +45,7 @@
         String cartToPath = addr + "/Cart?action=add&quantity=1&product=";
         ViewedProducts.add((Product) session.getAttribute("one_prd"));
         List<Product> LastViewedList = (List<Product>)session.getAttribute("LastViewedList");
+        List<Product> AllProductsList = (List<Product>)session.getAttribute("AllProductsList");
         
         
         //if (ViewedProducts.size()==6){
@@ -63,11 +64,11 @@
         <div class="main">
         <div class="contents">
             <div align="center">
-            
+            <h3> Take a look at our hottest products!</h3><br>
         <%
             
-        if (LastViewedList!=null){
-        for(Product p : LastViewedList){
+        if (AllProductsList!=null){
+        for(Product p : AllProductsList){
         %>
         
         <table width="800px" border="0" cellspacing="0" cellpadding="10">
@@ -111,67 +112,7 @@
 <%}}%>
             </div>
         </div>
-    </div>  
-    
-
-
-    
-
-        
-<div class="container">    
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="panel panel-primary">
-        <div class="panel-heading">BLACK FRIDAY DEAL</div>
-        <div class="panel-body"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-      </div>
-    </div>
-    <div class="col-sm-4"> 
-      <div class="panel panel-danger">
-        <div class="panel-heading">BLACK FRIDAY DEAL</div>
-        <div class="panel-body"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-      </div>
-    </div>
-    <div class="col-sm-4"> 
-      <div class="panel panel-success">
-        <div class="panel-heading">BLACK FRIDAY DEAL</div>
-        <div class="panel-body"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-      </div>
-    </div>
-  </div>
-</div><br>
-
-<div class="container">    
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="panel panel-primary">
-        <div class="panel-heading">BLACK FRIDAY DEAL</div>
-        <div class="panel-body"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-      </div>
-    </div>
-    <div class="col-sm-4"> 
-      <div class="panel panel-primary">
-        <div class="panel-heading">BLACK FRIDAY DEAL</div>
-        <div class="panel-body"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-      </div>
-    </div>
-    <div class="col-sm-4"> 
-      <div class="panel panel-primary">
-        <div class="panel-heading">BLACK FRIDAY DEAL</div>
-        <div class="panel-body"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-        <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-      </div>
-    </div>
-  </div>
-</div><br><br>
-        
-        
-    
+    </div>     
     </body>
  <%@ include file="WEB-INF/jsp/Footer.jsp"%>       
 </html>
