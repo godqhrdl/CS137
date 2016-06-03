@@ -107,6 +107,49 @@ public class Products {
       
         return results;
     }
+    public static List<Product> getAllProducts() throws SQLException{
+        List<Product> results = new ArrayList<Product>();
+        Statement statement = null;
+        Connection dbcon = null;
+        ResultSet rs = null;   
+        try{
+                Class.forName("com.mysql.jdbc.Driver").newInstance();
+                dbcon = DriverManager.getConnection(MysqlConfig.URL, MysqlConfig.USER, MysqlConfig.PASS);
+                statement = dbcon.createStatement();
+               
+                String query = "SELECT * FROM products";
+
+                rs = statement.executeQuery(query);
+                while(rs.next()){
+                    int pid = rs.getInt("product_id");
+                    double price = rs.getDouble("price");
+                    String name = rs.getString("product_name");
+                    String description = rs.getString("description");
+                    String features = rs.getString("features");
+                    String sub_feature = rs.getString("sub_feature");
+                    String imgURL = rs.getString("image");
+                    String category = rs.getString("category");
+                    Product cur = new Product(pid,price,name,description,features,sub_feature,imgURL,category);
+                    results.add(cur);
+                }
+
+                rs.close();
+                statement.close();
+                dbcon.close();
+
+        }
+         catch(Exception e){
+            e.printStackTrace();
+            results = null;
+	}
+        finally {
+            rs.close();
+            statement.close();
+            dbcon.close();
+        }
+      
+        return results;
+    }
 
 }
 
