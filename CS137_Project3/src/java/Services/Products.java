@@ -47,9 +47,6 @@ public class Products {
                     result = new Product(id,price,name,description,features,sub_feature,imgURL,category);
             }
 
-//            rs.close();
-//            statement.close();
-//            dbcon.close();
 
         }
         catch(Exception e){
@@ -57,10 +54,29 @@ public class Products {
             result = null;
 	}
         finally {
-            rs.close();
-            statement.close();
-            dbcon.close();
-}
+            if(rs != null){
+                try{
+                rs.close();
+                }catch(SQLException ex){
+                   ex.printStackTrace();
+                }
+
+            }
+            if(statement != null){
+                try{
+                statement.close();
+                }catch(SQLException ex){
+                   ex.printStackTrace();
+                }
+            }
+            if(dbcon != null){
+                try{
+                dbcon.close();
+                }catch(SQLException ex){
+                   ex.printStackTrace();
+                }
+            }
+        }
         return result;
     }
     
@@ -90,19 +106,34 @@ public class Products {
                     results.add(cur);
                 }
 
-                rs.close();
-                statement.close();
-                dbcon.close();
-
         }
          catch(Exception e){
             e.printStackTrace();
             results = null;
 	}
         finally {
-            rs.close();
-            statement.close();
-            dbcon.close();
+            if(rs != null){
+                try{
+                rs.close();
+                }catch(SQLException ex){
+                   ex.printStackTrace();
+                }
+
+            }
+            if(statement != null){
+                try{
+                statement.close();
+                }catch(SQLException ex){
+                   ex.printStackTrace();
+                }
+            }
+            if(dbcon != null){
+                try{
+                dbcon.close();
+                }catch(SQLException ex){
+                   ex.printStackTrace();
+                }
+            }
         }
       
         return results;
