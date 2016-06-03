@@ -53,7 +53,7 @@
         //}
         if (LastViewedList==null)
         {
-            out.print("<h3> You don't have any recently viewed items.</h3><br>");
+            //out.print("<h3> You don't have any recently viewed items.</h3><br>");
         }
         else
         {
