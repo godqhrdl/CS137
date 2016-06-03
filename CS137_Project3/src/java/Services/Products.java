@@ -164,9 +164,6 @@ public class Products {
                     results.add(cur);
                 }
 
-                rs.close();
-                statement.close();
-                dbcon.close();
 
         }
          catch(Exception e){
@@ -174,9 +171,28 @@ public class Products {
             results = null;
 	}
         finally {
-            rs.close();
-            statement.close();
-            dbcon.close();
+            if(rs != null){
+                try{
+                rs.close();
+                }catch(SQLException ex){
+                   ex.printStackTrace();
+                }
+
+            }
+            if(statement != null){
+                try{
+                statement.close();
+                }catch(SQLException ex){
+                   ex.printStackTrace();
+                }
+            }
+            if(dbcon != null){
+                try{
+                dbcon.close();
+                }catch(SQLException ex){
+                   ex.printStackTrace();
+                }
+            }
         }
       
         return results;
