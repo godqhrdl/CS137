@@ -12,7 +12,10 @@
     //String cartImage = currentPath + "/img/add-to-cart.png";
 
     String cartPath = homePath+"/Cart";
-	
+    
+    String AboutPath = homePath+"/AboutServlet";
+    
+    String ContactPath = homePath + "/ContactServlet";
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -76,7 +79,8 @@ nav .dropdown:hover .dropdown-content {
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="<%=homePath%>">Home</a></li>
-        <li><a href="#">About</a></li>
+        
+        <li><a href="<%=AboutPath%>">About</a></li>
         <li class="dropdown">
         <a href="<%=productListPath+"cellphone"%>" class="dropbtn">Products</a>
         <div class="dropdown-content">
@@ -85,7 +89,7 @@ nav .dropdown:hover .dropdown-content {
           <a href="<%=productListPath+"tablet"%>">Tablet</a>
         </div>
         </li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="<%=ContactPath%>">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="<%=cartPath%>"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>

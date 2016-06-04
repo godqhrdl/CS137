@@ -106,23 +106,9 @@ public class ProductDetail extends HttpServlet{
        }
        session.setAttribute("LastViewdList",LastViewedList);
        // if user is leaving this page,  remove user from hashmap
-       if ((request.getAttribute("load") == "false") && (users != null)){
-           if (request.getAttribute("product") != null){
-                int rm_id = (Integer) request.getAttribute("product");
-                int v = (Integer) users.get(rm_id);
-                if (v != 0){
-                    users.put(rm_id,v-1);
-                    servContext.setAttribute("users", users);
-                    session.setAttribute("last_product_detail",null);
-                    session.setAttribute("current_product_detail",null);
 
-                }
-                
-           }
-       }
-       
         
-       else {
+       
        session.setAttribute("current_product_detail",product);
        session.setAttribute("one_prd", product);
        
@@ -131,40 +117,73 @@ public class ProductDetail extends HttpServlet{
        //if the user has not viewed any product or has not viewed this product
        if (session.getAttribute("last_product_detail") == null ||session.getAttribute("last_product_detail") != session.getAttribute("current_product_detail")){
             
-      
-       
-        
-        
+
         //create hashmap
-        if (users == null){
-            
-            users = new HashMap();
-           
-        }
+            if (users == null){
+
+                users = new HashMap();
+
+            }
         
         //the first user of this product
-        else if (users.get(pid) == null ){
-                
-               users.put(pid,1);
-               request.setAttribute("customers",1);
-        }
+            else if (users.get(pid) == null ){
+
+                   users.put(pid,1);
+                   request.setAttribute("customers",1);
+            }
         
         //add user number of the product
-        else{
-            int val;
-            val = (Integer)users.get(pid);
-            users.put(pid,val+1);
-            request.setAttribute("customers",val+1);
-        }
+            else{
+                int val;
+                val = (Integer)users.get(pid);
+                users.put(pid,val+1);
+                request.setAttribute("customers",val+1);
+            }
         // update the hashmap in context object
        
         servContext.setAttribute("users", users);
-       }
+       
       
         
        //record the last product this user view
-       session.setAttribute("last_product_detail",product);
+      
        
         }
      }
+      protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        //get the delete product id
+        int delete_id;
+        String delete_pid = request.getParameter("delete_id");
+        if (delete_pid != null){
+            delete_id = Integer.parseInt(delete_pid);
+
+            //get hashmap
+            ServletContext servContext =  getServletConfig().getServletContext();
+            HttpSession session = request.getSession(true);
+            HashMap users =  (HashMap) servContext.getAttribute("users");
+        
+            //check if hashmap is empty
+
+            if ( (users != null)){
+               
+            //check if this product is a key in hashmap
+                if (users.get(delete_id) != null){
+                    
+                    int v = (Integer) users.get(delete_id);
+                    
+                    //if customer viewing > 0
+                    if (v != 0){
+                        users.put(delete_id,v-1);
+                        servContext.setAttribute("users", users);
+                        session.setAttribute("last_product_detail",delete_id);
+
+                    }
+
+               }
+            }
+         }
+       
+          
+      }
 }

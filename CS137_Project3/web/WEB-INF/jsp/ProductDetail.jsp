@@ -127,29 +127,22 @@
    String cartToPath = addr + "/Cart?action=add&quantity=1&product=";
    RequestDispatcher rd =  request.getRequestDispatcher("/ProductDetail");
   %>
- <script> 
-        
-        //window.addEventListener("load", function(){
-         window.addEventListener("load", function (){
-         <% request.setAttribute("load","true");%>
-         //rd.forward(request, response);
-         console.log("loaded");
-         
-     });
-
-        
-        window.addEventListener("beforeunload", function (){
-             <% request.setAttribute("load","false");
-                request.setAttribute("product",product.getPid());
-                //rd.include(request, response);
-             %>
-              
-              console.log("notLoaded");
-      });
-      
-      
+ <script type="text/javascript">
      
-      
+      window.addEventListener("beforeunload", function (){
+        $.ajax({
+            url:"/ProductDetail",
+            type:"post",
+            data:{"delete_id":<%product.getPid();%>},
+            success:function(){
+                 alert("success");
+             },
+
+             error:functiomn(){
+                 alert("fail");
+             }
+         });
+      }
 </script>
 
     <div id = "row3">

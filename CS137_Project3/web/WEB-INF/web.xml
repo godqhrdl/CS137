@@ -8,7 +8,14 @@
         <servlet-name>AllProducts</servlet-name>
         <url-pattern></url-pattern>
     </servlet-mapping>
-    
+     <servlet>
+        <servlet-name>ContactServlet</servlet-name>
+        <servlet-class>Servlets.Contactservlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AboutServlet</servlet-name>
+        <servlet-class>Servlets.AboutServlet</servlet-class>
+    </servlet>
     
     <servlet>
         <servlet-name>ConnectionTest</servlet-name>
@@ -110,7 +117,14 @@
         <servlet-name>OrderDetail</servlet-name>
         <servlet-class>Services.OrderDetail</servlet-class>
     </servlet>
-    
+     <servlet-mapping>
+        <servlet-name>ContactServlet</servlet-name>
+        <url-pattern>/ContactServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AboutServlet</servlet-name>
+        <url-pattern>/AboutServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
