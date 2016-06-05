@@ -34,6 +34,7 @@ public class AllProducts extends HttpServlet {
         HttpSession session = request.getSession(true);
    
         
+        
         List<Product> AllProductsList = null;
         try {
             AllProductsList = Products.getAllProducts();
