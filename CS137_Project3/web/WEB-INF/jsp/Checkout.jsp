@@ -20,6 +20,7 @@
     String action = request.getContextPath() + "/CheckoutServlet";
     String action_cart = request.getContextPath() + "/Cart";
     String pathToPrice = request.getContextPath() + "/TotalPrice?zipcode=";
+    String pathToProduct = request.getContextPath()+"/ProductDetail?id=";
 %>
 
 <!DOCTYPE html>
@@ -51,7 +52,9 @@
         
         <div class="col-sm-6">
             <label>
-                <a href=""><%=item.getProduct().getName()%></a>
+                <a href=<%=pathToProduct+item.getProduct().getPid()%>>
+                    <%=item.getProduct().getName()%>
+                </a>
                 &nbsp; $<%=item.getProduct().getPrice()%>
             </label>
             
@@ -198,10 +201,7 @@
 	}
 }
 </script>
-            
-            
-            
-            
+
     <%@ include file="Footer.jsp"%>       
     </body>
 </html>

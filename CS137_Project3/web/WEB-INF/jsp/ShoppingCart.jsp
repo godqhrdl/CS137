@@ -30,6 +30,7 @@
     String action_cart = request.getContextPath() + "/Cart";
     String action_checkout = request.getContextPath() + "/Checkout";
     String action = request.getContextPath() + "/CheckoutServlet";
+    String pathToProduct = request.getContextPath()+"/ProductDetail?id=";
 %>
 
 
@@ -43,7 +44,10 @@
 
             <div class="col-md-4">
 
-                    <label> <a href=""><%=item.getProduct().getName()%></a>
+                    <label> 
+                        <a href=<%=pathToProduct+item.getProduct().getPid()%>>
+                            <%=item.getProduct().getName()%>
+                        </a>
                     </label>
                     <label> $<%=item.getProduct().getPrice()%> </label>
             </div>
