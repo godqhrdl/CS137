@@ -64,11 +64,10 @@
         <div class="main">
         <div class="contents">
             <div align="center">
-            <h3> Take a look at our hottest products!</h3><br>
         <%
             
-        if (AllProductsList!=null){
-        for(Product p : AllProductsList){
+        if (LastViewedList!=null){
+        for(Product p : LastViewedList){
         %>
         
         <table width="800px" border="0" cellspacing="0" cellpadding="10">
@@ -110,6 +109,22 @@
     </table>
  <hr>
 <%}}%>
+            <h3> Take a look at our hottest products!</h3><br>
+        
+        <%
+            
+        if (AllProductsList!=null){
+        for(Product p : AllProductsList){
+            if ((p.getPid()!=111112) && (p.getPid()!=111114)&& (p.getPid()!=111120)){
+        %>
+        <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">NEW PRODUCT</div>
+        <div class="panel-body"><a href=<%=pathToProduct+p.getPid()%>><img src="<%=p.getImg_url()%>" class="img-responsive" style="width:100%" alt="Image"></a></div>
+        <div class="panel-footer"><a href=<%=pathToProduct+p.getPid()%>><%=p.getName()%></a></div>
+      </div>
+    </div> 
+           <%}}}%>       
             </div>
         </div>
     </div>     
