@@ -70,9 +70,8 @@ public class ProductDetail extends HttpServlet{
        int pid;
        String id = request.getParameter("id");
        pid = Integer.parseInt(id);
-        
-       HttpSession session = request.getSession(true);
-       ServletContext servContext =  getServletConfig().getServletContext();
+         HttpSession session = request.getSession(true);
+       
        
         Product product = null;
         try{
@@ -81,10 +80,7 @@ public class ProductDetail extends HttpServlet{
         catch(Exception e){
             e.printStackTrace();
         }
-        
-     
-       HashMap users =  (HashMap) servContext.getAttribute("users");
-       List<Product> LastViewedList =  (List<Product>) session.getAttribute("LastViewedList");
+        List<Product> LastViewedList =  (List<Product>) session.getAttribute("LastViewedList");
        if (LastViewedList==null)
        {
            System.out.println("NOW IT IS NULL");
@@ -105,6 +101,10 @@ public class ProductDetail extends HttpServlet{
            }
        }
        session.setAttribute("LastViewdList",LastViewedList);
+    
+       ServletContext servContext =  getServletConfig().getServletContext();
+       HashMap users =  (HashMap) servContext.getAttribute("users");
+       
        // if user is leaving this page,  remove user from hashmap
 
         
