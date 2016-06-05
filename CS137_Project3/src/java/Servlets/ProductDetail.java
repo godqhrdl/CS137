@@ -81,11 +81,14 @@ public class ProductDetail extends HttpServlet{
             e.printStackTrace();
         }
         List<Product> LastViewedList =  (List<Product>) session.getAttribute("LastViewedList");
+        System.out.println("NOW THE VIEWED LIST IS:"+LastViewedList);
        if (LastViewedList==null)
        {
            System.out.println("NOW IT IS NULL");
            LastViewedList=new ArrayList<Product>();
            LastViewedList.add(product);
+           session.setAttribute("LastViewedList",LastViewedList);
+            System.out.println("AFTER INSERT THE FIRST VALUE THE LIST IS:"+LastViewedList);
        }
        else{
            if (LastViewedList.size()<=4)
@@ -100,7 +103,7 @@ public class ProductDetail extends HttpServlet{
                LastViewedList.add(product);
            }
        }
-       session.setAttribute("LastViewdList",LastViewedList);
+       
     
        ServletContext servContext =  getServletConfig().getServletContext();
        HashMap users =  (HashMap) servContext.getAttribute("users");
@@ -153,6 +156,7 @@ public class ProductDetail extends HttpServlet{
       protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //get the delete product id
+         
         int delete_id;
         String delete_pid = request.getParameter("delete_id");
         if (delete_pid != null){
