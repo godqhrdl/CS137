@@ -1,3 +1,4 @@
+
 <%-- 
     Document   : Checkout
     Created on : May 28, 2016, 10:53:59 PM
@@ -46,7 +47,6 @@
             
         <%
                 for (CartItem item : items) {
-
         %>
         
         <div class="col-sm-6">

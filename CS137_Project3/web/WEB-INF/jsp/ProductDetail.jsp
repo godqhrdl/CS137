@@ -156,7 +156,7 @@
 
             <table id = "product_detail">
 				<tr><h1 id = "title"><% out.println(product.getName());%> </h1></tr>
-				<tr><h3 id = "price"><% out.println(product.getPrice());%></h3></tr>
+				<tr><h3 id = "price">$<% out.println(product.getPrice());%></h3></tr>
 				<tr><h3 id = "ship">Free Shipping</h3></tr>
 <!--				<tr><a href = "form.jsp?productid=<% out.println(product.getPid());%>"/>
                                 <img id ="buy" src = "img/buy.jpg" alt = "buy now" style = "width:200px;height:80px;">
